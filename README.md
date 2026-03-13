@@ -9,7 +9,7 @@ Normative specification and JSON schemas for OAS-CLI.
 - `spec/cli-profile.md`: command mapping profile and output requirements
 - `spec/agent-profile.md`: skill manifest and agent safety semantics
 - `schemas/*.schema.json`: machine-readable schemas for the published artifacts, including the compatibility matrix
-- `examples/`: example documents validated in CI
+- `examples/`: example documents validated in CI, including request-body, guidance-example, and richer NTC metadata coverage
 
 ## Validation
 

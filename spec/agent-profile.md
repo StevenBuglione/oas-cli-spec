@@ -10,6 +10,17 @@ The OAS-CLI Skill Manifest is a machine-readable advisory document that maps too
 - `serviceId`
 - `toolGuidance`
 
+Each `toolGuidance` entry MAY contain:
+
+- `whenToUse`
+- `avoidWhen`
+- `examples`
+
+Each `examples[]` item MUST contain:
+
+- `goal`
+- `command`
+
 ## Safety Metadata
 
 Agent-facing metadata MUST be able to represent:
@@ -17,8 +28,9 @@ Agent-facing metadata MUST be able to represent:
 - `destructive`
 - `readOnly`
 - `requiresApproval`
-- idempotency hints
+- `idempotent`
 - retry recommendations
+- polling or `Location`-header hints when long-running operations require follow-up requests
 
 ## Workflow Binding
 

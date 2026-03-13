@@ -35,6 +35,8 @@ The runtime-to-CLI contract is the Normalized Tool Catalog (NTC). It MUST includ
 
 Tool IDs MUST be stable across refetches of the same service. When `operationId` is present, it MUST be used as the operation identity component. Otherwise, implementations MUST derive an identity from method plus canonical path and mark it unstable.
 
+Each tool entry SHOULD preserve the agent-relevant CLI metadata needed to regenerate a stable command surface, including aliases, description overrides, hidden status, request-body contracts, guidance examples, and any output, pagination, retry, or idempotency hints carried by overlays or skill manifests.
+
 Each `sources[].provenance` entry MUST identify the provenance method and timestamp, and SHOULD expose per-fetch records when the implementation fetched remote discovery documents. These fetch records SHOULD include the HTTP request method, status code, and cache metadata that explain refresh or stale behavior.
 
 ## Runtime Requirements
@@ -48,6 +50,12 @@ The runtime MUST:
 - support manual refresh of cached remote discovery inputs
 - emit structured observability events for runtime request lifecycles
 - emit an audit event for every allowed or denied invocation attempt
+
+Local implementations MUST support:
+
+- an embedded runtime mode that executes in-process without a daemon
+- a daemon mode with a stable runtime metadata record that local CLIs can discover
+- isolated cache, audit, and runtime metadata paths per derived config scope or explicit instance id, with explicit overrides available for operators
 
 Tracing hooks are OPTIONAL, but implementations that offer them SHOULD wrap runtime request handling, remote discovery fetches, catalog build operations, and refresh execution behind stable hook points so tracing can be enabled without changing business logic call sites.
 

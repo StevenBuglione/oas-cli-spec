@@ -15,9 +15,20 @@
         "properties": {
           "whenToUse": { "type": "array", "items": { "type": "string" } },
           "avoidWhen": { "type": "array", "items": { "type": "string" } },
-          "examples": { "type": "array", "items": { "type": "object" } }
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["goal", "command"],
+              "properties": {
+                "goal": { "type": "string" },
+                "command": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          }
         },
-        "additionalProperties": true
+        "additionalProperties": false
       }
     }
   },

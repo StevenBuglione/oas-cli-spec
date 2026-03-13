@@ -79,18 +79,86 @@
           "path": { "type": "string" },
           "group": { "type": "string" },
           "command": { "type": "string" },
+          "aliases": { "type": "array", "items": { "type": "string" } },
           "summary": { "type": "string" },
+          "description": { "type": "string" },
+          "hidden": { "type": "boolean" },
           "pathParams": { "type": "array", "items": { "type": "object" } },
           "flags": { "type": "array", "items": { "type": "object" } },
+          "requestBody": {
+            "type": "object",
+            "required": ["required"],
+            "properties": {
+              "required": { "type": "boolean" },
+              "contentTypes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["mediaType"],
+                  "properties": {
+                    "mediaType": { "type": "string" },
+                    "schema": { "type": "object" }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          },
           "auth": { "type": "array", "items": { "type": "object" } },
           "safety": {
             "type": "object",
-            "required": ["destructive", "readOnly", "requiresApproval"],
+            "required": ["destructive", "readOnly", "requiresApproval", "idempotent"],
             "properties": {
               "destructive": { "type": "boolean" },
               "readOnly": { "type": "boolean" },
-              "requiresApproval": { "type": "boolean" }
+              "requiresApproval": { "type": "boolean" },
+              "idempotent": { "type": "boolean" }
             }
+          },
+          "output": {
+            "type": "object",
+            "properties": {
+              "defaultFields": { "type": "array", "items": { "type": "string" } },
+              "redactions": { "type": "array", "items": { "type": "string" } }
+            },
+            "additionalProperties": false
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "style": { "type": "string" },
+              "cursorParam": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          "retry": {
+            "type": "object",
+            "properties": {
+              "recommended": { "type": "boolean" },
+              "locationHeader": { "type": "boolean" }
+            },
+            "additionalProperties": false
+          },
+          "guidance": {
+            "type": "object",
+            "properties": {
+              "whenToUse": { "type": "array", "items": { "type": "string" } },
+              "avoidWhen": { "type": "array", "items": { "type": "string" } },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["goal", "command"],
+                  "properties": {
+                    "goal": { "type": "string" },
+                    "command": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
           }
         },
         "additionalProperties": true
