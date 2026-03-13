@@ -87,14 +87,14 @@
           "flags": { "type": "array", "items": { "type": "object" } },
           "requestBody": {
             "type": "object",
-            "required": ["required"],
+            "required": ["required", "contentTypes"],
             "properties": {
               "required": { "type": "boolean" },
               "contentTypes": {
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["mediaType"],
+                  "required": ["mediaType", "schema"],
                   "properties": {
                     "mediaType": { "type": "string" },
                     "schema": { "type": "object" }

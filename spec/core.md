@@ -35,7 +35,7 @@ The runtime-to-CLI contract is the Normalized Tool Catalog (NTC). It MUST includ
 
 Tool IDs MUST be stable across refetches of the same service. When `operationId` is present, it MUST be used as the operation identity component. Otherwise, implementations MUST derive an identity from method plus canonical path and mark it unstable.
 
-Each tool entry SHOULD preserve the agent-relevant CLI metadata needed to regenerate a stable command surface, including aliases, description overrides, hidden status, request-body contracts, guidance examples, and any output, pagination, retry, or idempotency hints carried by overlays or skill manifests.
+Each tool entry SHOULD preserve the agent-relevant CLI metadata needed to regenerate a stable command surface, including aliases, description overrides, hidden status, request-body contracts, guidance examples, and any output, pagination, retry, or idempotency hints carried by overlays or skill manifests. When a tool exposes a request body, the published NTC contract MUST include `requestBody.required` and one or more `requestBody.contentTypes[]` entries, and each content-type entry MUST include both the media type and a machine-readable schema. Each tool's `safety` block MUST also include an explicit boolean `idempotent` field.
 
 Each `sources[].provenance` entry MUST identify the provenance method and timestamp, and SHOULD expose per-fetch records when the implementation fetched remote discovery documents. These fetch records SHOULD include the HTTP request method, status code, and cache metadata that explain refresh or stale behavior.
 

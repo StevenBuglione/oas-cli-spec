@@ -2,7 +2,7 @@
 
 ## Skill Manifest
 
-The OAS-CLI Skill Manifest is a machine-readable advisory document that maps tool IDs to usage guidance, caveats, and examples.
+The OAS-CLI Skill Manifest is a machine-readable advisory document that maps tool IDs to usage guidance and examples.
 
 ## Required Fields
 
@@ -31,6 +31,8 @@ Agent-facing metadata MUST be able to represent:
 - `idempotent`
 - retry recommendations
 - polling or `Location`-header hints when long-running operations require follow-up requests
+
+Every published NTC tool entry MUST expose an explicit boolean `safety.idempotent` field so agents do not have to infer it from method or prose.
 
 ## Workflow Binding
 

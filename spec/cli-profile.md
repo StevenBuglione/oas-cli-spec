@@ -37,7 +37,7 @@ For request bodies, implementations MUST support:
 
 - `--body @file.json`
 - `--body -` for stdin
-- an NTC `requestBody` contract that preserves `required`, media types, and a machine-readable schema for each content type
+- an NTC `requestBody` contract that preserves `required` plus at least one `contentTypes[]` entry, and each content-type entry MUST include both the media type and a machine-readable schema
 
 When overlays provide `x-cli-description`, `x-cli-output`, `x-cli-pagination`, or `x-cli-retry`, implementations SHOULD surface those hints through the normalized catalog so CLIs and agents can reproduce consistent help, formatting, and control-flow behavior.
 
