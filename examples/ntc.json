@@ -9,7 +9,20 @@
       "uri": "https://api.example.com/v1",
       "provenance": {
         "method": "rfc8631",
-        "at": "2026-03-12T23:59:59Z"
+        "at": "2026-03-12T23:59:59Z",
+        "fetches": [
+          {
+            "url": "https://api.example.com/v1",
+            "fetchedAt": "2026-03-12T23:59:59Z",
+            "method": "rfc8631",
+            "requestMethod": "GET",
+            "statusCode": 304,
+            "cacheOutcome": "revalidated_hit",
+            "etag": "\"tickets-v1\"",
+            "cacheControl": "max-age=0",
+            "expiresAt": "2026-03-12T23:59:59Z"
+          }
+        ]
       }
     }
   ],

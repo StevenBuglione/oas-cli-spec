@@ -22,7 +22,28 @@
             "required": ["method", "at"],
             "properties": {
               "method": { "type": "string" },
-              "at": { "type": "string", "format": "date-time" }
+              "at": { "type": "string", "format": "date-time" },
+              "fetches": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["url", "fetchedAt", "method"],
+                  "properties": {
+                    "url": { "type": "string" },
+                    "fetchedAt": { "type": "string", "format": "date-time" },
+                    "method": { "type": "string" },
+                    "requestMethod": { "type": "string" },
+                    "statusCode": { "type": "integer" },
+                    "cacheOutcome": { "type": "string" },
+                    "etag": { "type": "string" },
+                    "lastModified": { "type": "string" },
+                    "cacheControl": { "type": "string" },
+                    "expiresAt": { "type": "string", "format": "date-time" },
+                    "stale": { "type": "boolean" }
+                  },
+                  "additionalProperties": false
+                }
+              }
             },
             "additionalProperties": false
           }

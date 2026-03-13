@@ -27,6 +27,15 @@ Later scopes override earlier mutable values, but Managed denies remain absolute
 - allow and deny arrays append uniquely across scopes
 - managed denies are preserved separately and remain non-overridable
 
+## Refresh Policy
+
+Each source MAY define a `refresh` object with these fields:
+
+- `maxAgeSeconds`: advisory freshness override for HTTP-fetched discovery documents when origin cache headers are absent or more permissive local policy is required
+- `manualOnly`: when `true`, automatic revalidation SHOULD be suppressed and stale cached content SHOULD be retained until an explicit refresh trigger is invoked
+
+Refresh policy is source-scoped and follows normal scope precedence rules.
+
 ## Secret References
 
 Secret values MUST NOT be embedded directly in project config. Supported reference types are:

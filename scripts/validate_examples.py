@@ -29,7 +29,8 @@ def main() -> None:
     validate("cli.schema.json", "project.cli.json")
     validate("skill-manifest.schema.json", "skill-manifest.json")
     validate("ntc.schema.json", "ntc.json")
-    print("validated 3 example documents")
+    validate("compatibility-matrix.schema.json", "compatibility-matrix.json")
+    print("validated 4 example documents")
 
 
 if __name__ == "__main__":
